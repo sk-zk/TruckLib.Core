@@ -12,7 +12,7 @@ namespace TruckLib
         private static float Deg(float rad) => (float)(rad * (180.0 / Math.PI));
 
         /// <summary>
-        /// Converts a quaternion to Euler angles.
+        /// Converts a quaternion to Euler angles in YXZ order.
         /// </summary>
         /// <param name="q">The quaternion.</param>
         /// <returns>Euler angles in radians.</returns>
@@ -20,7 +20,7 @@ namespace TruckLib
         {
             // via https://stackoverflow.com/a/56055813
 
-            double x, y, z;
+            q = Quaternion.Normalize(q);
 
             // if the input quaternion is normalized, this is exactly one. 
             // Otherwise, this acts as a correction factor for the quaternion's not-normalizedness
@@ -29,6 +29,7 @@ namespace TruckLib
             // this will have a magnitude of 0.5 or greater if and only if this is a singularity case
             float test = q.X * q.W - q.Y * q.Z;
 
+            double x, y, z;
             if (test > 0.4995f * unit) // singularity at north pole
             {
                 x = Math.PI / 2;
