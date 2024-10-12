@@ -8,7 +8,7 @@ using TruckLib;
 
 namespace TruckLibTests.TruckLib.Extensions
 {
-    public class MiscExtensions
+    public class MiscExtensionsTest
     {
         [Fact]
         public void Push()
