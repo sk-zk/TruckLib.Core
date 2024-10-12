@@ -50,5 +50,29 @@ namespace TruckLibTests.TruckLib
         {
             Assert.Equal(valid, Token.IsValidToken(input));
         }
+
+        [Fact]
+        public void SetString()
+        {
+            var token = new Token();
+            token.String = "default";
+            Assert.Equal(0x1573C3E700UL, token.Value);
+        }
+
+        [Fact]
+        public void ToString_()
+        {
+            var token = new Token("default");
+            Assert.Equal("default", token.ToString());
+        }
+
+        [Fact]
+        public void ImplicitCastThrowsOnNegative()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                var a = (Token)(-42);
+            });
+        }
     }
 }

@@ -33,6 +33,8 @@ namespace TruckLibTests.TruckLib
             var ff = new FlagField(0b100);
             ff[3] = true;
             Assert.Equal(0b1100u, ff.Bits);
+            ff[3] = false;
+            Assert.Equal(0b0100u, ff.Bits);
         }
 
         [Fact]
@@ -98,12 +100,19 @@ namespace TruckLibTests.TruckLib
         }
 
         [Fact]
-        public void GetBitSringThrowsOutOfRangeException()
+        public void GetBitStringWithZeroLength()
+        {
+            var ff = new FlagField(0b110110);
+            Assert.Equal(0U, ff.GetBitString(1, 0));
+        }
+
+        [Fact]
+        public void GetBitStringThrowsOutOfRangeException()
         {
             Assert.Throws<IndexOutOfRangeException>(() =>
             {
                 var ff = new FlagField();
-                ff.GetBitString(0, 32);
+                ff.GetBitString(28, 10);
             });
         }
 
@@ -116,13 +125,28 @@ namespace TruckLibTests.TruckLib
         }
 
         [Fact]
-        public void SetBitSringThrowsOutOfRangeException()
+        public void SetBitStringWithZeroLength()
+        {
+            var ff = new FlagField();
+            ff.SetBitString(1, 0, 0b11011);
+            Assert.Equal(0U, ff.Bits);
+        }
+
+        [Fact]
+        public void SetBitStringThrowsOutOfRangeException()
         {
             Assert.Throws<IndexOutOfRangeException>(() =>
             {
                 var ff = new FlagField();
                 ff.SetBitString(24, 24, 0);
             });
+        }
+
+        [Fact]
+        public void ToString_()
+        {
+            var ff = new FlagField(42);
+            Assert.Equal("00000000000000000000000000101010", ff.ToString());
         }
     }
 }
