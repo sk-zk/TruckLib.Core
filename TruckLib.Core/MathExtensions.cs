@@ -22,21 +22,17 @@ namespace TruckLib
 
             q = Quaternion.Normalize(q);
 
-            // if the input quaternion is normalized, this is exactly one. 
-            // Otherwise, this acts as a correction factor for the quaternion's not-normalizedness
-            float unit = (q.X * q.X) + (q.Y * q.Y) + (q.Z * q.Z) + (q.W * q.W);
-
             // this will have a magnitude of 0.5 or greater if and only if this is a singularity case
             float test = q.X * q.W - q.Y * q.Z;
 
             double x, y, z;
-            if (test > 0.4995f * unit) // singularity at north pole
+            if (test > 0.4995f) // singularity at north pole
             {
                 x = Math.PI / 2;
                 y = 2f * Math.Atan2(q.Y, q.X);
                 z = 0;
             }
-            else if (test < -0.4995f * unit) // singularity at south pole
+            else if (test < -0.4995f) // singularity at south pole
             {
                 x = -Math.PI / 2;
                 y = -2f * Math.Atan2(q.Y, q.X);
