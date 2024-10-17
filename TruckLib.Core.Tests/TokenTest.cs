@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TruckLib;
 
-namespace TruckLibTests.TruckLib
+namespace TruckLib.Core.Tests
 {
     public class TokenTest
     {

@@ -1,6 +1,6 @@
 using TruckLib;
 
-namespace TruckLibTests.TruckLib
+namespace TruckLib.Core.Tests
 {
     public class NibbleTest
     {
