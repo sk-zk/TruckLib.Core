@@ -148,5 +148,26 @@ namespace TruckLib.Core.Tests
             var ff = new FlagField(42);
             Assert.Equal("00000000000000000000000000101010", ff.ToString());
         }
+
+        [Fact]
+        public void Equal()
+        {
+            var ff1 = new FlagField(0b1010);
+            var ff2 = new FlagField(0b0101);
+            var ff3 = new FlagField(0b1010);
+            Assert.False(ff1 == ff2);
+            Assert.True(ff1 == ff3);
+        }
+
+
+        [Fact]
+        public void NotEqual()
+        {
+            var ff1 = new FlagField(0b1010);
+            var ff2 = new FlagField(0b0101);
+            var ff3 = new FlagField(0b1010);
+            Assert.True(ff1 != ff2);
+            Assert.False(ff1 != ff3);
+        }
     }
 }
