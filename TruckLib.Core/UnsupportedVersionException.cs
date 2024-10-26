@@ -9,11 +9,6 @@ namespace TruckLib
     /// <summary>
     /// Thrown if the version of a file format is not supported by this library.
     /// </summary>
-    public class UnsupportedVersionException : Exception
-    {
-        /// <inheritdoc/>
-        public UnsupportedVersionException(string message) : base(message)
-        {
-        }
-    }
+    /// <inheritdoc/>
+    public class UnsupportedVersionException(string message) : Exception(message);
 }
