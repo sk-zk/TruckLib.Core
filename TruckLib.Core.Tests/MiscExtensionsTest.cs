@@ -13,25 +13,28 @@ namespace TruckLib.Core.Tests
         [Fact]
         public void Push()
         {
-            int[] arr = [1, 2, 3];
-            arr = arr.Push(4);
-            Assert.Equal(arr, [1, 2, 3, 4]);
+            int[] actual = [1, 2, 3];
+            actual = actual.Push(4);
+            int[] expected = [1, 2, 3, 4];
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PushEmpty()
         {
-            int[] arr = [];
-            arr = arr.Push(42);
-            Assert.Equal(arr, [42]);
+            int[] actual = [];
+            actual = actual.Push(42);
+            int[] expected = [42];
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PushNull()
         {
-            int[]? arr = null;
-            arr = arr.Push(42);
-            Assert.Equal(arr, [42]);
+            int[]? actual = null;
+            actual = actual.Push(42);
+            int[] expected = [42];
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
