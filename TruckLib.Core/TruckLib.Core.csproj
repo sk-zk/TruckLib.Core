@@ -6,7 +6,7 @@
 		<Nullable>disable</Nullable>
 		<RootNamespace>TruckLib</RootNamespace>
 		<Authors>skzk</Authors>
-		<Version>0.1.1.0</Version>
+		<Version>0.1.2.0</Version>
 		<Title>TruckLib.Core</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/sk-zk/TruckLib.Core</RepositoryUrl>
@@ -14,6 +14,8 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<Description>Core functionality depended on by multiple TruckLib packages</Description>
 		<PackageProjectUrl>https://github.com/sk-zk/TruckLib/</PackageProjectUrl>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -27,9 +29,12 @@
     </None>
   </ItemGroup>
 
-
 	<ItemGroup>
 	  <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 	</ItemGroup>
 
 </Project>
