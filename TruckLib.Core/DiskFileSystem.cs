@@ -22,7 +22,7 @@ namespace TruckLib
         public string GetParent(string path) => Directory.GetParent(path).FullName;
 
         /// <inheritdoc/>
-        public Stream Open(string path) => new FileStream(path, FileMode.Open, FileAccess.Read);
+        public Stream Open(string path) => File.OpenRead(path);
 
         /// <inheritdoc/>
         public byte[] ReadAllBytes(string path) => File.ReadAllBytes(path);
