@@ -153,7 +153,7 @@ namespace TruckLib
         public override int GetHashCode() =>
             bits.GetHashCode();
 
-        private void AssertInRange(int i, int min, int max)
+        private static void AssertInRange(int i, int min, int max)
         {
             if (i > max || i < min)
                 throw new IndexOutOfRangeException();
