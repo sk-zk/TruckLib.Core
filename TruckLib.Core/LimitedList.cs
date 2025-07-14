@@ -42,6 +42,19 @@ namespace TruckLib
             MaxCapacity = maxCapacity;
         }
 
+        /// <param name="maxCapacity">The maximum number of elements the list can contain.</param>
+        /// <param name="initialCapacity">The collection whose elements are copied to the new list.</param>
+        public LimitedList(uint maxCapacity, IEnumerable<T> collection)
+        {
+            ArgumentOutOfRangeException.ThrowIfZero(maxCapacity);
+
+            if (collection.Count() > maxCapacity)
+                throw new ArgumentOutOfRangeException("collection.Count");
+
+            list = new(collection);
+            MaxCapacity = maxCapacity;
+        }
+
         public T this[int index] 
         { 
             get => list[index]; 

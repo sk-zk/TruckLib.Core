@@ -20,12 +20,31 @@ namespace TruckLib.Core.Tests
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => new LimitedList<int>(0));
             Assert.Throws<ArgumentOutOfRangeException>(() => new LimitedList<int>(0, 0));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LimitedList<int>(0, [0,1,2]));
         }
 
         [Fact]
         public void ConstructorThrowsIfInitialCapacityTooLarge()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => new LimitedList<int>(5, 6));
+        }
+
+        [Fact]
+        public void ConstructorWithList()
+        {
+            var orig = new List<int> { 0, 1, 2 };
+            var list = new LimitedList<int>(4, orig);
+            Assert.Equal(orig, list);
+            Assert.Equal(4u, list.MaxCapacity);
+            list[0] = 42;
+            Assert.NotEqual(42, orig[0]);
+        }
+
+        [Fact]
+        public void ConstructorWithListThrowsIfInitialCapacityTooSmall()
+        {
+            var orig = new List<int> { 0, 1, 2 };
+            Assert.Throws<ArgumentOutOfRangeException>(() => new LimitedList<int>(2, orig));
         }
 
         [Fact]
