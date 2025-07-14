@@ -113,7 +113,7 @@ namespace TruckLib
         /// <param name="list">The list to write.</param>
         /// <typeparam name="T">The type of the list.</typeparam>
         /// <exception cref="NotImplementedException"></exception>
-        public static void WriteObjectList<T>(this BinaryWriter w, List<T> list)
+        public static void WriteObjectList<T>(this BinaryWriter w, IList<T> list)
         {
             if (list is null || list.Count == 0)
                 return;

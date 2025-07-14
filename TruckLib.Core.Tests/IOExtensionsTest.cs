@@ -149,5 +149,26 @@ namespace TruckLib.Core.Tests
             var expected = Convert.FromHexString("11223344");
             Assert.Equal(expected, ms.ToArray());
         }
+
+        [Fact]
+        public void ReadShortList()
+        {
+            var input = Convert.FromHexString("aa00bb00cc00");
+            using var ms = new MemoryStream(input);
+            using var r = new BinaryReader(ms);
+            var actual = r.ReadObjectList<short>(3);
+            Assert.Equal([0xaa, 0xbb, 0xcc], actual);
+        }
+
+        [Fact]
+        public void WriteLimitedList()
+        {
+            using var ms = new MemoryStream();
+            using var w = new BinaryWriter(ms);
+            var list = new LimitedList<short>(4) { 0xaa, 0xbb, 0xcc };
+            w.WriteObjectList(list);
+            var expected = Convert.FromHexString("aa00bb00cc00");
+            Assert.Equal(expected, ms.ToArray());
+        }
     }
 }
