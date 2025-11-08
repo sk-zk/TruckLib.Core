@@ -27,6 +27,15 @@ namespace TruckLib
         bool FileExists(string path);
 
         /// <summary>
+        /// Determines whether the given path refers to an existing directory.    
+        /// </summary>
+        /// <param name="path">The directory to check.</param>
+        /// <returns><c>true</c> if path refers to an existing directory; <c>false</c> if 
+        /// the directory does not exist or an error occurs when trying to determine 
+        /// if the specified directory exists.</returns>
+        bool DirectoryExists(string path);
+
+        /// <summary>
         /// Returns the names of files (including their paths) in the specified directory.
         /// </summary>
         /// <param name="path">The absolute path to the directory to search.</param>

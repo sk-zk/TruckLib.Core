@@ -16,6 +16,9 @@ namespace TruckLib
         public bool FileExists(string path) => File.Exists(path);
 
         /// <inheritdoc/>
+        public bool DirectoryExists(string path) => Directory.Exists(path);
+
+        /// <inheritdoc/>
         public IList<string> GetFiles(string path) => Directory.GetFiles(path);
 
         /// <inheritdoc/>
